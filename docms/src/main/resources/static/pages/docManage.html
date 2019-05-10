@@ -1,0 +1,429 @@
+<!-- 文档查询 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>陆军项目管理中心</title>
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../assets/page/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../assets/page/css/feather.css">
+    <link rel="stylesheet" href="../assets/page/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../assets/page/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="../assets/page/css/shared-style.css">
+    <link rel="stylesheet" href="../assets/page/css/style.css">
+    <link rel="stylesheet" href="../assets/page/css/dark-theme.css">
+    <!-- 旋转菜单 -->
+    <link rel="stylesheet" href="../assets/rotateMenu/css/rotateMenu.css">
+    <!-- 多条件查询 -->
+    <link rel="stylesheet" href="../assets/multipleSelection/css/multipleSelection.css">
+    <!-- 下拉框 -->
+    <link rel="stylesheet" href="../assets/dropDownbox/css/dropDownbox.css">
+    <!-- 弹框样式 -->
+    <link rel="stylesheet" href="../assets/bulletBox/css/bulletBox.css">
+    <!-- 消息弹框样式 -->
+    <link rel="stylesheet" href="../assets/spop/css/spop.min.css">
+     <!-- 分页样式 -->
+    <link rel="stylesheet" href="../assets/pagination/css/pagination.css">
+    <!-- 树形下拉框 -->
+    <link rel="stylesheet" href="../assets/treedownbox/css/treedownbox.css">
+</head>
+
+<body class="dark-theme sidebar-dark">
+    <div class="container-scroller">
+        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row navbar-dark" style="border:0;margin: 0!important;">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+                <a class="navbar-brand brand-logo" href="index">
+                    <img src="../assets/page/images/proManage/logo-mini_3.svg" alt="logo" />项目管理系统
+                </a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <span class="menu-icon mdi mdi-cube-outline go_home" style="margin-left: 1.25rem;font-size: 1.25rem;cursor: pointer;"></span>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item d-none d-lg-block color-setting">
+                        <a class="nav-link" href="#">
+                            <i class="mdi mdi-tune"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown d-none d-xl-inline-block">
+                        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <span class="profile-text">admin</span>
+                            <img class="img-xs rounded-circle" src="../assets/page/images/proManage/face8.jpg" alt="Profile image">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                            <a class="dropdown-item mt-2"> 管理账号 </a>
+                            <a class="dropdown-item"> 更改密码 </a>
+                            <a class="dropdown-item"> 注销 </a>
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="icon-menu"></span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="container-fluid page-body-wrapper">
+            <div class="theme-setting-wrapper">
+                <div id="theme-settings" class="settings-panel">
+                    <i class="settings-close mdi mdi-close"></i>
+                    <div class="d-flex align-items-center justify-content-between border-bottom">
+                        <p class="settings-heading font-weight-bold border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">左侧导航</p>
+                    </div>
+                    <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                        <div class="img-ss rounded-circle bg-light border mr-3"></div>白
+                    </div>
+                    <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                        <div class="img-ss rounded-circle bg-dark border mr-3"></div>黑
+                    </div>
+                    <p class="settings-heading font-weight-bold mt-2">导航头</p>
+                    <div class="color-tiles mx-0 px-4">
+                        <div class="tiles primary"></div>
+                        <div class="tiles success"></div>
+                        <div class="tiles warning"></div>
+                        <div class="tiles danger"></div>
+                        <div class="tiles pink"></div>
+                        <div class="tiles info"></div>
+                        <div class="tiles dark"></div>
+                        <div class="tiles default"></div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item nav-profile not-navigation-link">
+                        <div class="nav-link">
+                            <div class="user-wrapper">
+                                <div class="profile-image">
+                                    <img src="../assets/page/images/proManage/face8.jpg" alt="profile image">
+                                </div>
+                                <div class="text-wrapper">
+                                    <p class="profile-name">admin</p>
+                                    <ul class="nav navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <a href="#" class="nav-link d-flex user-switch-dropdown-toggler" id="UsersettingsDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                <small class="designation text-muted">正常</small>
+                                                <span class="status-indicator online"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#dashboard-dropdown" aria-expanded="false" aria-controls="dashboard-dropdown">
+                            <i class="menu-icon mdi mdi-television"></i>
+                            <span class="menu-title">项目管理</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="dashboard-dropdown">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="proInquiry">项目查询</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="docManage">文档查询</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="dailyOffice">
+                            <i class="menu-icon mdi mdi-texture"></i>
+                            <span class="menu-title">日常办公</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
+                            <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                            <span class="menu-title">数据库管理</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="page-layouts">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="pimoc">干部个人信息管理</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="iotge">专家资讯组信息</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="smi">配套厂家信息</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="emi">装备手册信息</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="funds">经费与拨付</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="infoMutual">
+                            <i class="menu-icon mdi mdi-code-brackets"></i>
+                            <span class="menu-title">信息交互</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="sharingData">
+                            <i class="menu-icon mdi mdi-shield-outline"></i>
+                            <span class="menu-title">共享资料</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="userCente">
+                            <i class="menu-icon mdi mdi-arrow-right-bold-circle"></i>
+                            <span class="menu-title">用户中心</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="cord" style="background-color:#252C46">
+                        <!-- 旋转菜单 -->
+                        <div class="row">
+                            <div class="selector">
+                                <ul>
+                                    <li>
+                                        <input id="1" type="checkbox">
+                                        <label for="1">预研项目</label>
+                                    </li>
+                                    <li>
+                                        <input id="2" type="checkbox">
+                                        <label for="2">型号项目</label>
+                                    </li>
+                                    <li>
+                                        <input id="3" type="checkbox">
+                                        <label for="3">订购项目</label>
+                                    </li>
+                                    <li>
+                                        <input id="4" type="checkbox">
+                                        <label for="4">军内科研</label>
+                                    </li>
+                                    <li>
+                                        <input id="5" type="checkbox">
+                                        <label for="5">专项建设</label>
+                                    </li>
+                                    <li>
+                                        <input id="6" type="checkbox">
+                                        <label for="6">部队建设</label>
+                                    </li>
+
+                                </ul>
+                                <button id="push_button" type="button">收起</button>
+                            </div>
+                        </div>
+
+                        <div class="row search_row" style="padding: 1.25rem;display: none">
+                            <div class='search_subject'>
+                                <div class="clearfix" style="position:relative">
+                                    <p class="shaixuan_tj clearfix">
+                                        <span>
+                                            <strong>预研阶段</strong>
+                                        </span>
+                                    </p>
+                                    <span class="show_click" style="display:none">
+                                        <b data-key="类型">类型：</b>
+                                        <em></em>
+                                        <i></i>
+                                    </span>
+                                    <span class="proName">项目名称</span>
+                                    <div class="select-menu" style=" top: -7.75rem;right: 14.6875rem;">
+                                        <div class="select-menu-div">
+                                            <input readonly class="select-menu-input" />
+                                            <i class="fa fa-caret-down"></i>
+                                        </div>
+                                        <ul class="select-menu-ul">
+                                            <li class="select-this">张国荣</li>
+                                            <li>朱自清</li>
+                                            <li>张蚁之</li>
+                                            <li>陈独秀</li>
+                                        </ul>
+                                    </div>
+                                    <button type="button" style="position:absolute;right: 0rem;top: -0.375rem;" class="btn-primary btn newDoc">新增文档</button>
+                                    <button type="button" style="position:absolute;right: 8.125rem;top: -0.375rem;" class="btn-primary btn doc_inquiry">查询</button>
+                                </div>
+                                <div class="search_wrapper ">
+                                    <div class="search_by">
+                                        <dl class="subject_dl clearfix" data-key='预研项目' style="display:none">
+                                            <dt class="subject_dt">
+                                                <a href="javascirpt:;">类型：</a>
+                                            </dt>
+                                            <dd class="subject_dd">
+                                                <a href="javascirpt:;" class="menu-icon mdi mdi-sticker">立项</o>
+                                                    <a href="javascirpt:;">合同订购</a>
+                                                    <a href="javascirpt:;">合同文档</a>
+                                                    <a href="javascirpt:;">合同材料</a>
+                                                    <a href="javascirpt:;">问题材料</a>
+                                                    <a href="javascirpt:;">其他材料</a>
+                                            </dd>
+                                        </dl>
+                                        
+                                        <dl class="subject_dl clearfix" data-key='型号项目' style="display:none">
+                                            <dt class="subject_dt">
+                                                <a href="javascirpt:;">类型：</a>
+                                            </dt>
+                                            <dd class="subject_dd" data-key='型号项目'>
+                                                <a href="javascirpt:;" class="menu-icon mdi mdi-sticker">立项</a>
+                                                <a href="javascirpt:;">竞争择优</a>
+                                                <a href="javascirpt:;" class="delta" style="border: .0625rem solid #3b425f;">合同履行</a>
+                                                <a href="javascirpt:;">合同监管文档</a>
+                                                <a href="javascirpt:;">合同监管文件材料</a>
+                                                <a href="javascirpt:;">其他材料</a>
+                                            </dd>
+                                            <dd class="subject_dd subject_dd_none">
+                                                <a href="javascirpt:;" class="menu-icon mdi mdi-sticker">方案设计</a>
+                                                <a href="javascirpt:;">工程研制</a>
+                                                <a href="javascirpt:;">性能鉴定试验</a>
+                                                <a href="javascirpt:;">状态鉴定</a>
+                                                <a href="javascirpt:;">作战试验</a>
+                                                <a href="javascirpt:;">列装列型</a>
+                                                <a href="javascirpt:;">合同付款</a>
+                                            </dd>
+                                        </dl>
+
+                                        <dl class="subject_dl clearfix" data-key='订购项目' style="display:none">
+                                            <dt class="subject_dt">
+                                                <a href="javascirpt:;">类型：</a>
+                                            </dt>
+                                            <dd class="subject_dd">
+                                                <a href="javascirpt:;" class="menu-icon mdi mdi-sticker">竞争择优</a>
+                                                <a href="javascirpt:;">合同签订</a>
+                                                <a href="javascirpt:;" class="delta" style="border: .0625rem solid #3b425f;">合同履行</a>
+                                                <a href="javascirpt:;">合同监管文档</a>
+                                                <a href="javascirpt:;">合同监管文件材料</a>
+                                                <a href="javascirpt:;">价格情况</a>
+                                                <a href="javascirpt:;">存在问题</a>
+                                                <a href="javascirpt:;">其他材料</a>
+                                            </dd>
+
+                                            <dd class="subject_dd subject_dd_none">
+                                                <a href="javascirpt:;" class="menu-icon mdi mdi-sticker">技术状态管理</a>
+                                                <a href="javascirpt:;">调拨</a>
+                                                <a href="javascirpt:;">付款</a>
+                                                <a href="javascirpt:;">售后服务</a>
+                                                <a href="javascirpt:;">培训</a>
+                                            </dd>
+                                        </dl>
+
+                                        <dl class="subject_dl clearfix" data-key='军内科研' style="display:none">
+                                            <dt class="subject_dt">
+                                                <a href="javascirpt:;">类型：</a>
+                                            </dt>
+                                            <dd class="subject_dd">
+                                                <a href="javascirpt:;" class="menu-icon mdi mdi-sticker">项目管理</a>
+                                                <a href="javascirpt:;">成果管理</a>
+                                            </dd>
+                                        </dl>
+
+                                        <dl class="subject_dl clearfix" data-key='部队建设' style="display:none">
+                                            <dt class="subject_dt">
+                                                <a href="javascirpt:;">类型：</a>
+                                            </dt>
+                                            <dd class="subject_dd">
+                                                <a href="javascirpt:;" class="menu-icon mdi mdi-sticker">任务依据</a>
+                                                <a href="javascirpt:;">合同</a>
+                                                <a href="javascirpt:;">部对调研及问题</a>
+                                                <a href="javascirpt:;">方案</a>
+                                                <a href="javascirpt:;">实施</a>
+                                                <a href="javascirpt:;">加改装装备</a>
+                                                <a href="javascirpt:;">备注</a>
+                                            </dd>
+                                        </dl>
+
+                                        <dl class="subject_dl clearfix" data-key='专项建设' style="display:none">
+                                            <dt class="subject_dt">
+                                                <a href="javascirpt:;">类型：</a>
+                                            </dt>
+                                            <dd class="subject_dd">
+                                                <a href="javascirpt:;" class="menu-icon mdi mdi-sticker">任务依据</a>
+                                                <a href="javascirpt:;">合同</a>
+                                                <a href="javascirpt:;">方案</a>
+                                                <a href="javascirpt:;">实施</a>
+                                                <a href="javascirpt:;">相关问题</a>
+                                                <a href="javascirpt:;">备注</a>
+
+                                            </dd>
+                                        </dl>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="outside" style="display:none">
+                            <div class="card-body">
+                                <h4 class="card-title" style=" margin-left: .9375rem;">数据表</h4>
+                                <div class="row">
+                                    <div class="col-12" style="text-align:center">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>序号</th>
+                                                    <th>父项目</th>
+                                                    <th>子项目</th>
+                                                    <th>项目阶段</th>
+                                                    <th>文档路径</th>
+                                                    <th>创建日期</th>
+                                                    <th>修改日期</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                        <div id='page' class="page_div"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <option data-key=订购项目 key-id=0532975838c3406c8387cd8d82425b30 value=政治工作部>政治工作部</option>
+        <optgroup label=中央军委科技委 data-key=预研项目 key-id=5885347755a0411f831fcc090a76bff7>
+        </optgroup>
+        <optgroup label=shoushen data-key=型号项目 key-id=bd01a21384cf4913881323537fb75d44>
+    </optgroup>
+
+    <!-- 页面脚本 -->
+    <script src="../assets/page/js/vendor.bundle.base.js"></script>
+    <script src="../assets/page/js/vendor.bundle.addons.js"></script>
+    <script src="../assets/page/js/off-canvas.js"></script>
+    <script src="../assets/page/js/hoverable-collapse.js"></script>
+    <script src="../assets/page/js/misc.js"></script>
+    <script src="../assets/page/js/settings.js"></script>
+    <script src="../assets/page/js/todolist.js"></script>
+    <!-- 消息弹框 -->
+    <script src="../assets/spop/js/spop.min.js"></script>
+    <!-- 工具 -->
+    <script src="../assets/page/js/util/js/util.js"></script>
+    <!-- 旋转菜单 -->
+    <script src="../assets/rotateMenu/js/rotateMenu.js"></script>
+    <script src="../assets/multipleSelection/js/multipleSelection.js"></script>
+    <!-- 下拉框 -->
+    <script src="../assets/dropDownbox/js/dropDownbox.js"></script>
+    <!-- 树形下拉框 -->
+    <script src="../assets/treedownbox/js/treedownbox.js"></script>
+    <!-- 弹框 -->
+    <script src="../assets/bulletBox/js/bulletBox.js"></script>
+    <!-- 分页 -->
+    <script src="../assets/pagination/js/paging.js"></script>
+    <!-- 页面脚本 -->
+    <script src="../assets/page/js/docManage/js/docManage.js"></script>
+</body>
+
+</html>

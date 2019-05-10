@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqy.docms.dao.DailyMapper" >
+
+    <insert id="saveDailyOffice" parameterType="com.tqy.docms.entity.DailyOffice">
+        insert into daily_office(id,gwlx,fbdw,theme,create_date,update_date,filepath,filesize,bz)
+        VALUES (#{id},#{gwlx},#{fbdw},#{theme},#{createDate},#{updateDate},#{filepath},#{filesize},#{bz})
+    </insert>
+    
+    <update id="updateDailyOffice" parameterType="com.tqy.docms.entity.DailyOffice">
+        UPDATE daily_office SET
+        gwlx = #{gwlx}
+        ,fbdw = #{fbdw}
+        ,theme = #{theme}
+        ,update_date = #{updateDate}
+        ,filepath = #{filepath}
+        ,filesize = #{filesize}
+        ,bz = #{bz}
+        WHERE id = #{id}
+    </update>
+    
+    <select id="queryDailyCount" resultType="java.lang.Integer">
+   		select count(1) from daily_office
+        where 1=1
+        <if test="gwlx != null and gwlx != ''.toString()">
+            and gwlx = #{gwlx}
+        </if>
+        <if test="fbdw != null and fbdw != ''.toString()">
+            and fbdw = #{fbdw}
+        </if>
+        <if test="theme != null and theme != ''.toString()">
+            and theme = #{theme}
+        </if>
+    </select>
+    
+    <select id="getDailyOffice" resultType="com.tqy.docms.entity.DailyOffice">
+   		select id,
+   			gwlx,
+   			fbdw,
+   			theme,
+   			filepath,
+   			filesize,
+   			bz,
+   			create_date AS "createDate",
+   			update_date AS "updateDate"
+        from daily_office
+        where 1=1
+        <if test="gwlx != null and gwlx != ''.toString()">
+            and gwlx = #{gwlx}
+        </if>
+        <if test="fbdw != null and fbdw != ''.toString()">
+            and fbdw = #{fbdw}
+        </if>
+        <if test="theme != null and theme != ''.toString()">
+            and theme = #{theme}
+        </if>
+        limit #{start},#{end}
+    </select>
+    
+    <select id="getDailyById" resultType="com.tqy.docms.entity.DailyOffice">
+    	select id,
+   			gwlx,
+   			fbdw,
+   			theme,
+   			filepath,
+   			filesize,
+   			bz,
+   			create_date AS "createDate",
+   			update_date AS "updateDate"
+        from daily_office
+        where id=#{id}
+    </select>
+    
+    <delete id="delDailyById">
+    	delete from daily_office where id=#{id}
+    </delete>
+</mapper>

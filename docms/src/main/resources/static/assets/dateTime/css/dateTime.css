@@ -1,0 +1,256 @@
+.calendar * {
+    box-sizing: border-box;
+    font-size: 14px
+}
+
+.calendar-sm {
+    cursor: default;
+    width: 800px;
+    height: 370px
+}
+
+.calendar {
+    cursor: default;
+    width: 1200px;
+    height: 342px;
+    position: relative;
+    top: -120px;
+    left: -87px;
+}
+
+.calendar-sm .c-pad-top {
+    padding-top: 2%
+}
+
+.c-event-top {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 60px;
+    height: 440px;
+    transform: rotate(90deg);
+    float: left;
+    top: -100px;
+    position: relative;
+    left: 250px;
+    z-index: 9;
+}
+
+.c-grid {
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    height: 342px;
+    width: 440px;
+    float: left;
+    padding: 0 25px;
+    color: #bbc3cd;
+    position: relative;
+    top: 150px
+}
+
+.c-day {
+    border-radius: 3px;
+    width: 45px;
+    height: 45px;
+    float: left;
+    text-align: center;
+    margin: 5px 5px 0;
+    color: #bbc3cd;
+    line-height: 45px
+}
+
+.c-day-previous-month {
+    width: 45px;
+    height: 45px;
+    float: left;
+    text-align: center;
+    color: gray;
+    margin: 5px 5px 0
+}
+
+.c-day-next-month {
+    width: 45px;
+    height: 45px;
+    float: left;
+    text-align: center;
+    color: gray;
+    margin: 5px 5px 0
+}
+
+.c-week-day {
+    width: 55px;
+    height: 10.38%;
+    line-height: 25px;
+    float: left;
+    text-align: center;
+    padding-top: 1%
+}
+
+.c-next {
+    width: 24px;
+    height: 24px;
+    text-align: right;
+    cursor: pointer;
+    text-align: center;
+    background: url(../images/you.png);
+    position: absolute;
+    transform: rotate(-90deg);
+    right: 17px;
+    top: 45px;
+}
+
+.c-previous {
+    width: 24px;
+    height: 24px;
+    text-align: left;
+    cursor: pointer;
+    text-align: center;
+    background: url(../images/zuo.png);
+    position: absolute;
+    right: 17px;
+    top: 375px;
+    transform: rotate(-90deg);
+}
+
+.c-month {
+    width: 100%;
+    height: inherit;
+    text-align: center
+}
+
+.c-month-top {
+    font-size: 22px;
+    margin-top: 211px;
+    width: 83px;
+    position: relative;
+    transform: rotate(-90deg);
+    top: 7px;
+    left: -9px;
+}
+
+.c-month-center {
+
+    color: #fff
+}
+
+.c-month-bottom {
+    font-size: 22px;
+    height: 30px
+}
+
+.c-nav-btn-over {}
+
+.c-today {
+    color: #fff;
+    background: -webkit-linear-gradient(left, #ffc74e, #ff9211);
+    background: -o-linear-gradient(right, #ffc74e, #ff9211);
+    background: -moz-linear-gradient(right, #ffc74e, #ff9211);
+    background: linear-gradient(to right, #ffc74e, #ff9211)
+}
+
+.c-event {
+    background-color: #00aeff;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden
+}
+
+.c-event-grid {
+    position: absolute;
+    height: inherit;
+    width: 565px;
+    top: 50%;
+    transform: translateY(calc(-50% + 8px));
+    right:20px
+}
+
+.c-grid-title {
+    color: #fff
+}
+
+.c-event-body {
+    height: 342px;
+    overflow: hidden
+}
+
+.c-event-list {
+    border: 1px solid;
+    overflow: auto;
+    height: 95%;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden
+}
+
+.c-event-list::-webkit-scrollbar {
+    display: none
+}
+
+.c-event-item>.title {
+    font-weight: 700
+}
+
+.c-event-item>div {
+    text-overflow: ellipsis;
+    width: inherit;
+    overflow: hidden;
+    white-space: nowrap
+}
+
+.c-event-item {
+    transition: all .5s;
+    -moz-transition: all .5s;
+    -webkit-transition: all .5s;
+    -o-transition: all .5s;
+    padding-left: 10px;
+    padding: 20px 0 20px 20px;
+    border-bottom: 1px solid #f9f9f9
+}
+
+.c-event-over {
+    font-weight: 700;
+    color: #fff;
+    background: -webkit-linear-gradient(left, #01c2e6, #1160ff);
+    background: -o-linear-gradient(right, #01c2e6, #1160ff);
+    background: -moz-linear-gradient(right, #01c2e6, #1160ff);
+    background: linear-gradient(to right, #01c2e6, #1160ff)
+}
+
+.c-event-over1 {
+    background: #f9f9f9;
+    color: #000
+}
+
+.c-event-over1 a {
+    color: #000
+}
+
+.c-event-over a {
+    color: #fff
+}
+
+.c-event-over>.description {
+    font-weight: 400
+}
+
+.title {
+    float: left;
+    margin-right: 5px
+}
+
+.description {
+    float: left
+}
+
+.c-month-center {
+    transform: rotate(270deg);
+    position: relative;
+    top: -76px;
+    font-size: 22px;
+    left: 2px;
+}
+
+.list-item:not(:last-of-type){
+    border-bottom: 1px solid #dee2e6;
+}

@@ -1,0 +1,389 @@
+<!-- 装备手册信息 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>陆军项目管理中心</title>
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../assets/page/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../assets/page/css/feather.css">
+    <link rel="stylesheet" href="../assets/page/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../assets/page/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="../assets/page/css/shared-style.css">
+    <link rel="stylesheet" href="../assets/page/css/style.css">
+    <link rel="stylesheet" href="../assets/page/css/dark-theme.css">
+    <!-- 多条件查询 -->
+    <link rel="stylesheet" href="../assets/multipleSelection/css/multipleSelection.css">
+    <!-- 下拉框 -->
+    <link rel="stylesheet" href="../assets/dropDownbox/css/dropDownbox.css">
+    <!-- 弹框样式 -->
+    <link rel="stylesheet" href="../assets/bulletBox/css/bulletBox.css">
+</head>
+
+<body class="dark-theme sidebar-dark">
+    <div class="container-scroller">
+        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row navbar-dark" style="border:0;margin: 0!important;">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+                <a class="navbar-brand brand-logo" href="index">
+                    <img src="../assets/page/images/proManage/logo-mini_3.svg" alt="logo" />项目管理系统
+                </a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <span class="menu-icon mdi mdi-cube-outline go_home" style="margin-left: 1.25rem;font-size: 1.25rem;cursor: pointer;"></span>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item d-none d-lg-block color-setting">
+                        <a class="nav-link" href="#">
+                            <i class="mdi mdi-tune"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown d-none d-xl-inline-block">
+                        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <span class="profile-text">admin</span>
+                            <img class="img-xs rounded-circle" src="../assets/page/images/proManage/face8.jpg" alt="Profile image">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                            <a class="dropdown-item mt-2"> 管理账号 </a>
+                            <a class="dropdown-item"> 更改密码 </a>
+                            <a class="dropdown-item"> 注销 </a>
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="icon-menu"></span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="container-fluid page-body-wrapper">
+            <div class="theme-setting-wrapper">
+                <div id="theme-settings" class="settings-panel">
+                    <i class="settings-close mdi mdi-close"></i>
+                    <div class="d-flex align-items-center justify-content-between border-bottom">
+                        <p class="settings-heading font-weight-bold border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">左侧导航</p>
+                    </div>
+                    <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                        <div class="img-ss rounded-circle bg-light border mr-3"></div>白
+                    </div>
+                    <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                        <div class="img-ss rounded-circle bg-dark border mr-3"></div>黑
+                    </div>
+                    <p class="settings-heading font-weight-bold mt-2">导航头</p>
+                    <div class="color-tiles mx-0 px-4">
+                        <div class="tiles primary"></div>
+                        <div class="tiles success"></div>
+                        <div class="tiles warning"></div>
+                        <div class="tiles danger"></div>
+                        <div class="tiles pink"></div>
+                        <div class="tiles info"></div>
+                        <div class="tiles dark"></div>
+                        <div class="tiles default"></div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item nav-profile not-navigation-link">
+                        <div class="nav-link">
+                            <div class="user-wrapper">
+                                <div class="profile-image">
+                                    <img src="../assets/page/images/proManage/face8.jpg" alt="profile image">
+                                </div>
+                                <div class="text-wrapper">
+                                    <p class="profile-name">admin</p>
+                                    <ul class="nav navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <a href="#" class="nav-link d-flex user-switch-dropdown-toggler" id="UsersettingsDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                <small class="designation text-muted">正常</small>
+                                                <span class="status-indicator online"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#dashboard-dropdown" aria-expanded="false" aria-controls="dashboard-dropdown">
+                            <i class="menu-icon mdi mdi-television"></i>
+                            <span class="menu-title">项目管理</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="dashboard-dropdown">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="proInquiry">项目查询</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="docManage">文档查询</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="dailyOffice">
+                            <i class="menu-icon mdi mdi-texture"></i>
+                            <span class="menu-title">日常办公</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
+                            <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                            <span class="menu-title">数据库管理</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="page-layouts">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="pimoc">干部个人信息管理</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="iotge">专家资讯组信息</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="smi">配套厂家信息</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="emi">装备手册信息</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="funds">经费与拨付</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href="infoMutual">
+                            <i class="menu-icon mdi mdi-code-brackets"></i>
+                            <span class="menu-title">信息交互</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="sharingData">
+                            <i class="menu-icon mdi mdi-shield-outline"></i>
+                            <span class="menu-title">共享资料</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="userCente">
+                            <i class="menu-icon mdi mdi-arrow-right-bold-circle"></i>
+                            <span class="menu-title">用户中心</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+                    <div class="cord" style="background-color:#252C46">
+                        <div class="row search_row" style="padding: 1.25rem">
+                            <div class='search_subject'>
+                                <div class="clearfix" style="position:relative">
+                                    <span class="proName" style="left:.9375rem">装备名称</span>
+                                    <input type="text" class="form-control" style="background: transparent;width: 12.5rem;height: 1.875rem;border-radius: .3125rem;position: relative;left: 6.25rem;top: -0.25rem;">
+                                    <span class="proName" style="left:20.3125rem">装备类型</span>
+                                    <div class="select-menu" style=" top: -7.75rem;left: 19.375rem;">
+                                        <div class="select-menu-div">
+                                            <input readonly class="select-menu-input" />
+                                            <i class="fa fa-caret-down"></i>
+                                        </div>
+                                        <ul class="select-menu-ul">
+                                            <li class="select-this">指控装备</li>
+                                            <li>电抗装备</li>
+                                            <li>侦查装备</li>
+                                            <li>测绘装备</li>
+                                            <li>气象装备</li>
+                                            <li>雷达装装</li>
+                                            <li>无人机装装</li>
+                                            <li>通信装备</li>
+                                        </ul>
+                                    </div>
+                                    <span class="proName" style="left:40rem">主要特点</span>
+                                    <div class="select-menu" style=" top: -7.75rem;left:39.0625rem;">
+                                        <div class="select-menu-div">
+                                            <input readonly class="select-menu-input" />
+                                            <i class="fa fa-caret-down"></i>
+                                        </div>
+                                        <ul class="select-menu-ul">
+                                            <li class="select-this">指挥控制</li>
+                                            <li>雷达侦查对抗</li>
+                                            <li>光电侦查对抗</li>
+                                            <li>通信与对抗</li>
+                                            <li>无人机</li>
+                                            <li>软件</li>
+                                            <li>测绘导航</li>
+                                            <li>水文气象</li>
+                                            <li>心理战</li>
+                                            <li>其他</li>
+                                        </ul>
+                                    </div>
+                                    <span class="proName" style="right: 34.0625rem;top: -0.0625rem">承研承制单位</span>
+                                    <div class="select-menu" style=" top: -7.75rem;right: 19.6875rem;">
+                                        <div class="select-menu-div">
+                                            <input readonly class="select-menu-input" />
+                                            <i class="fa fa-caret-down"></i>
+                                        </div>
+                                        <ul class="select-menu-ul">
+                                            <li class="select-this">计算机</li>
+                                            <li>自控</li>
+                                            <li>通信</li>
+                                            <li>网络</li>
+                                        </ul>
+                                    </div>
+                                    <button type="button" style="position:absolute;top: -0.375rem;right:2.8125rem" class="btn-primary btn btn_date">新增数据</button>
+                                    <button type="button" style="position:absolute;top: -0.375rem;right:12.1875rem" class="btn-primary btn">查询</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="outside">
+                            <div class="card-body">
+                                <h4 class="card-title" style=" margin-left: .9375rem;">数据表</h4>
+                                <div class="row">
+                                    <div class="col-12" style="text-align:center">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>序号</th>
+                                                    <th>装备名称</th>
+                                                    <th>主要用途</th>
+                                                    <th>装备类型</th>
+                                                    <th>战术技术性能</th>
+                                                    <th>主要特点</th>
+                                                    <th>定型时间</th>
+                                                    <th>编配级别</th>
+                                                    <th>承研承制单位</th>
+                                                    <th>备注</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <th>操作</th>
+                                                    <td>增城</td>
+                                                    <td>1998-1-1</td>
+                                                    <td>测试</td>
+                                                    <th>指挥控制</th>
+                                                    <td>软件工程</td>
+                                                    <td>软件工程</td>
+                                                    <td>研究生</td>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <button class="btn btn-outline-primary emi_revise">修改</button>
+                                                        <button class="btn btn-outline-warning" style="margin:0 .9375rem"><a style='color:inherit' href="../assets/page/file/doc/text.docx">查看</a></button>
+                                                        <button class="btn btn-outline-info" style="margin-right: .9375rem">在线编辑</button>
+                                                        <button class="btn btn-outline-danger emi_delete">删除</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <th>操作</th>
+                                                    <td>增城</td>
+                                                    <td>1998-1-1</td>
+                                                    <td>测试</td>
+                                                    <th>指挥控制</th>
+                                                    <td>软件工程</td>
+                                                    <td>软件工程</td>
+                                                    <td>研究生</td>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <button class="btn btn-outline-primary emi_revise">修改</button>
+                                                        <button class="btn btn-outline-warning" style="margin:0 .9375rem"><a style='color:inherit' href="../assets/page/file/xlsx/text.xlsx">查看</a></button>
+                                                        <button class="btn btn-outline-info" style="margin-right: .9375rem">在线编辑</button>
+                                                        <button class="btn btn-outline-danger emi_delete">删除</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <th>操作</th>
+                                                    <td>增城</td>
+                                                    <td>1998-1-1</td>
+                                                    <td>测试</td>
+                                                    <th>指挥控制</th>
+                                                    <td>软件工程</td>
+                                                    <td>软件工程</td>
+                                                    <td>研究生</td>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <button class="btn btn-outline-primary emi_revise">修改</button>
+                                                        <button class="btn btn-outline-warning" style="margin:0 .9375rem"><a style='color:inherit' href="../assets/page/file/video/text.mp4">查看</a></button>
+                                                        <button class="btn btn-outline-info" style="margin-right: .9375rem">在线编辑</button>
+                                                        <button class="btn btn-outline-danger emi_delete">删除</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <th>操作</th>
+                                                    <td>增城</td>
+                                                    <td>1998-1-1</td>
+                                                    <td>测试</td>
+                                                    <th>指挥控制</th>
+                                                    <td>软件工程</td>
+                                                    <td>软件工程</td>
+                                                    <td>研究生</td>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <button class="btn btn-outline-primary emi_revise">修改</button>
+                                                        <button class="btn btn-outline-warning" style="margin:0 .9375rem"><a style='color:inherit' href="../assets/page/file/pptx/text.pptx">查看</a></button>
+                                                        <button class="btn btn-outline-info" style="margin-right: .9375rem">在线编辑</button>
+                                                        <button class="btn btn-outline-danger emi_delete">删除</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <th>操作</th>
+                                                    <td>增城</td>
+                                                    <td>1998-1-1</td>
+                                                    <td>测试</td>
+                                                    <th>指挥控制</th>
+                                                    <td>软件工程</td>
+                                                    <td>软件工程</td>
+                                                    <td>研究生</td>
+                                                    <td>1</td>
+                                                    <td>
+                                                        <button class="btn btn-outline-primary emi_revise">修改</button>
+                                                        <button class="btn btn-outline-warning" style="margin:0 .9375rem"><a style='color:inherit' href="../assets/page/file/img/text.png">查看</a></button>
+                                                        <button class="btn btn-outline-info" style="margin-right: .9375rem">在线编辑</button>
+                                                        <button class="btn btn-outline-danger emi_delete">删除</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 页面脚本 -->
+    <script src="../assets/page/js/vendor.bundle.base.js"></script>
+    <script src="../assets/page/js/vendor.bundle.addons.js"></script>
+    <script src="../assets/page/js/off-canvas.js"></script>
+    <script src="../assets/page/js/hoverable-collapse.js"></script>
+    <script src="../assets/page/js/misc.js"></script>
+    <script src="../assets/page/js/settings.js"></script>
+    <script src="../assets/page/js/todolist.js"></script>
+    <!-- 工具 -->
+    <script src="../assets/page/js/util/js/util.js"></script>
+    <!-- 下拉框 -->
+    <script src="../assets/dropDownbox/js/dropDownbox.js"></script>
+    <!-- 弹框 -->
+    <script src="../assets/bulletBox/js/bulletBox.js"></script>
+    <!-- 页面脚本 -->
+    <script src="../assets/page/js/emi/js/emi.js"></script>
+    </script>
+</body>
+
+</html>

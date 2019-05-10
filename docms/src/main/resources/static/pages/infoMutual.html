@@ -1,0 +1,675 @@
+<!-- 信息交互 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>陆军项目管理中心</title>
+    <!-- 页面样式 -->
+    <link rel="stylesheet" href="../assets/page/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../assets/page/css/feather.css">
+    <link rel="stylesheet" href="../assets/page/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../assets/page/css/vendor.bundle.addons.css">
+    <link rel="stylesheet" href="../assets/page/css/shared-style.css">
+    <link rel="stylesheet" href="../assets/page/css/style.css">
+    <link rel="stylesheet" href="../assets/page/css/dark-theme.css">
+</head>
+
+<body class="dark-theme sidebar-dark">
+    <div class="container-scroller">
+        <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row navbar-dark" style="border:0;margin: 0!important;">
+            <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+                <a class="navbar-brand brand-logo" href="index">
+                    <img src="../assets/page/images/proManage/logo-mini_3.svg" alt="logo" />项目管理系统
+                </a>
+            </div>
+            <div class="navbar-menu-wrapper d-flex align-items-center">
+                <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+                <span class="menu-icon mdi mdi-cube-outline go_home" style="margin-left: 1.25rem;font-size: 1.25rem;cursor: pointer;"></span>
+                <ul class="navbar-nav navbar-nav-right">
+                    <li class="nav-item d-none d-lg-block color-setting">
+                        <a class="nav-link" href="#">
+                            <i class="mdi mdi-tune"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown d-none d-xl-inline-block">
+                        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <span class="profile-text">admin</span>
+                            <img class="img-xs rounded-circle" src="../assets/page/images/proManage/face8.jpg" alt="Profile image">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                            <a class="dropdown-item mt-2"> 管理账号 </a>
+                            <a class="dropdown-item"> 更改密码 </a>
+                            <a class="dropdown-item"> 注销 </a>
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="icon-menu"></span>
+                </button>
+            </div>
+        </nav>
+        <div class="container-fluid page-body-wrapper">
+            <div class="theme-setting-wrapper">
+                <div id="theme-settings" class="settings-panel">
+                    <i class="settings-close mdi mdi-close"></i>
+                    <div class="d-flex align-items-center justify-content-between border-bottom">
+                        <p class="settings-heading font-weight-bold border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">左侧导航</p>
+                    </div>
+                    <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                        <div class="img-ss rounded-circle bg-light border mr-3"></div>白
+                    </div>
+                    <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                        <div class="img-ss rounded-circle bg-dark border mr-3"></div>黑
+                    </div>
+                    <p class="settings-heading font-weight-bold mt-2">导航头</p>
+                    <div class="color-tiles mx-0 px-4">
+                        <div class="tiles primary"></div>
+                        <div class="tiles success"></div>
+                        <div class="tiles warning"></div>
+                        <div class="tiles danger"></div>
+                        <div class="tiles pink"></div>
+                        <div class="tiles info"></div>
+                        <div class="tiles dark"></div>
+                        <div class="tiles default"></div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                <ul class="nav">
+                    <li class="nav-item nav-profile not-navigation-link">
+                        <div class="nav-link">
+                            <div class="user-wrapper">
+                                <div class="profile-image">
+                                    <img src="../assets/page/images/proManage/face8.jpg" alt="profile image">
+                                </div>
+                                <div class="text-wrapper">
+                                    <p class="profile-name">admin</p>
+                                    <ul class="nav navbar-nav">
+                                        <li class="nav-item dropdown">
+                                            <a href="#" class="nav-link d-flex user-switch-dropdown-toggler" id="UsersettingsDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                <small class="designation text-muted">正常</small>
+                                                <span class="status-indicator online"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#dashboard-dropdown" aria-expanded="false" aria-controls="dashboard-dropdown">
+                            <i class="menu-icon mdi mdi-television"></i>
+                            <span class="menu-title">项目管理</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="dashboard-dropdown">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./proInquiry">项目查询</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./docManage">文档查询</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed" href='./dailyOffice'>
+                            <i class="menu-icon mdi mdi-texture"></i>
+                            <span class="menu-title">日常办公</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#page-layouts" aria-expanded="false" aria-controls="page-layouts">
+                            <i class="menu-icon mdi mdi-notification-clear-all"></i>
+                            <span class="menu-title">数据库管理</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="page-layouts">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./pimoc">干部个人信息管理</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./iotge">专家资讯组信息</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./smi">配套厂家信息</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="./emi">装备手册信息</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="funds">经费与拨付</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="infoMutual">
+                            <i class="menu-icon mdi mdi-code-brackets"></i>
+                            <span class="menu-title">信息交互</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="sharingData">
+                            <i class="menu-icon mdi mdi-shield-outline"></i>
+                            <span class="menu-title">共享资料</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="userCente">
+                            <i class="menu-icon mdi mdi-arrow-right-bold-circle"></i>
+                            <span class="menu-title">用户中心</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="main-panel">
+                <div class="content-wrapper px-3 pt-0 pb-0">
+                    <div class="email-wrapper wrapper">
+                        <div class="mail-sidebar">
+                            <div class="menu-bar">
+                                <ul class="menu-items">
+                                    <li class="compose mb-3">
+                                        <button class="btn btn-primary btn-block">写邮件</button>
+                                    </li>
+                                    <li class="active">
+                                        <a href="#">
+                                            <i class="mdi mdi-email-outline"></i>收件箱
+                                        </a>
+                                        <span class="badge badge-pill badge-success">8</span>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="mdi mdi-share"></i>发送
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="mdi mdi-file-outline"></i>草案
+                                        </a>
+                                        <span class="badge badge-pill badge-warning">4</span>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="mdi mdi-upload"></i>发件箱
+                                        </a>
+                                        <span class="badge badge-pill badge-danger">3</span>
+                                    </li>
+                                    
+                                    <li>
+                                        <a href="#">
+                                            <i class="mdi mdi-delete"></i>垃圾
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="wrapper d-none d-md-block">
+                                    <div class="online-status d-flex justify-content-between align-items-center">
+                                        <p class="chat">聊天</p>
+                                        <span class="status offline online"></span>
+                                    </div>
+                                </div>
+                                <ul class="profile-list d-none d-md-block">
+                                    <li class="profile-list-item">
+                                        <a href="#">
+                                            <img class="img-xs rounded-circle" src="../../../assets/images/faces/face1.jpg" alt="">
+                                            <div class="user">
+                                                <p class="u-name">大卫
+                                                </p>
+                                                <p class="u-designation">Python开发人员
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="profile-list-item">
+                                        <a href="#">
+                                            <img class="img-xs rounded-circle" src="../../../assets/images/faces/face2.jpg" alt="">
+                                            <div class="user">
+                                                <p class="u-name">斯特拉约翰逊
+                                                </p>
+                                                <p class="u-designation">SEO专家
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="profile-list-item">
+                                        <a href="#">
+                                            <img class="img-xs rounded-circle" src="../../../assets/images/faces/face20.jpg" alt="">
+                                            <div class="user">
+                                                <p class="u-name">凯瑟琳
+                                                </p>
+                                                <p class="u-designation">IOS开发人员
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="profile-list-item">
+                                        <a href="#">
+                                            <img class="img-xs rounded-circle" src="../../../assets/images/faces/face12.jpg" alt="">
+                                            <div class="user">
+                                                <p class="u-name">约翰·多伊
+                                                </p>
+                                                <p class="u-designation">业务分析师
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="profile-list-item">
+                                        <a href="#">
+                                            <img class="img-xs rounded-circle" src="../../../assets/images/faces/face25.jpg" alt="">
+                                            <div class="user">
+                                                <p class="u-name">丹尼尔罗素
+                                                </p>
+                                                <p class="u-designation">测试仪
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="profile-list-item">
+                                        <a href="#">
+                                            <img class="img-xs rounded-circle" src="../../../assets/images/faces/face10.jpg" alt="">
+                                            <div class="user">
+                                                <p class="u-name">莎拉格雷夫斯
+                                                </p>
+                                                <p class="u-designation">管理员
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="profile-list-item">
+                                        <a href="#">
+                                            <img class="img-xs rounded-circle" src="../../../assets/images/faces/face23.jpg" alt="">
+                                            <div class="user">
+                                                <p class="u-name">索菲亚拉拉
+                                                </p>
+                                                <p class="u-designation">UI / UX
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="profile-list-item">
+                                        <a href="#">
+                                            <img class="img-xs rounded-circle" src="../../../assets/images/faces/face11.jpg" alt="">
+                                            <div class="user">
+                                                <p class="u-name">凯瑟琳迈尔斯
+                                                </p>
+                                                <p class="u-designation">业务分析师
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li class="profile-list-item">
+                                        <a href="#">
+                                            <img class="img-xs rounded-circle" src="../../../assets/images/faces/face9.jpg" alt="">
+                                            <div class="user">
+                                                <p class="u-name">蒂姆
+                                                </p>
+                                                <p class="u-designation">PHP开发人员
+                                                </p>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="email-view-wrapper">
+                            <div class="mail-list-container">
+                                <div class="border-bottom pt-4 pb-4 mb-3 px-3 d-flex align-items-center">
+                                    <div class="form-group mb-0 w-100 mr-4 mr-md-0">
+                                        <input class="form-control w-100" type="search" placeholder="搜索邮件" id="Mail-rearch">
+                                    </div>
+                                    <div class="aside-toggler btn btn-secondary btn-icons ml-auto d-md-none">
+                                        <i class="mdi mdi-menu"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">大卫摩尔
+                                        </p>
+                                        <p class="message_text">嗨Emily，请注意，新项目的演示文稿将于周一截止。
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list new_mail">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" checked="">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">Microsoft帐户密码更改
+                                        </p>
+                                        <p class="message_text">使用安全代码35525更改Microsoft帐户的密码
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star favorite"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">索菲亚拉拉
+                                        </p>
+                                        <p class="message_text">您好，注册年度音乐活动的最后日期即将结束
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">斯特拉戴维森
+                                        </p>
+                                        <p class="message_text">嘿那里，你能寄给我今年的假期日历吗？
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star favorite"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">大卫摩尔
+                                        </p>
+                                        <p class="message_text">FYI
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star favorite"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">丹尼尔罗素
+                                        </p>
+                                        <p class="message_text">嗨，请查找本周的更新
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">莎拉格雷夫斯
+                                        </p>
+                                        <p class="message_text">嘿，你能寄给我今年的假期日历吗？
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">布鲁诺金
+                                        </p>
+                                        <p class="message_text">嗨，请在附件中找到本周的监测报告。
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">我，马克
+                                        </p>
+                                        <p class="message_text">嗨，测试完成了。系统已准备好上线。
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">凯瑟琳迈尔斯
+                                        </p>
+                                        <p class="message_text">模板市场：限时优惠!!! 所有模板均享50％折扣。
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star favorite"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">丹尼尔罗素
+                                        </p>
+                                        <p class="message_text">嗨Emily，请在5月10日到5月20日之间批准我的叶子10天。
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">莎拉格雷夫斯
+                                        </p>
+                                        <p class="message_text">您好，请充分利用限时优惠。抓住你的最爱
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">约翰·多伊
+                                        </p>
+                                        <p class="message_text">这是完成在线网络安全课程的第一个提醒
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star-outline"></i>
+                                    </div>
+                                </div>
+                                <div class="mail-list">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input">
+                                            <i class="input-helper"></i>
+                                        </label>
+                                    </div>
+                                    <div class="content">
+                                        <p class="sender-name">布鲁诺
+                                        </p>
+                                        <p class="message_text">亲爱的员工，根据规定，所有员工都必须完成
+                                        </p>
+                                    </div>
+                                    <div class="details">
+                                        <i class="mdi mdi-star-outline"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mail-view">
+                                <div class="mail-header-toolbar">
+                                    <button type="button" class="btn btn-icons btn-rounded btn-outline-primary mail-back-button mr-3">
+                                        <i class="mdi mdi-arrow-left"></i>
+                                    </button>
+                                    <div class="wrapper">
+                                        <div class="btn-group mb-1">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                                <i class="mdi mdi-reply text-primary"></i>答复
+                                            </button>
+                                        </div>
+                                        <div class="btn-group mb-1">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                                <i class="mdi mdi-delete text-primary"></i>删除
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="message-body">
+                                    <div class="sender-details">
+                                        <img class="img-sm rounded-circle mr-3" src="../../../assets/images/faces/face11.jpg" alt="">
+                                        <div class="details">
+                                            <p class="msg-subject">每周更新 - 第19周（2017年5月8日 - 2017年5月14日）
+                                            </p>
+                                            <p class="sender-email">Sarah Graves
+                                                <a href="#">itsmesarah268
+                                                </a> &nbsp; <i class="mdi mdi-account-multiple-plus"></i>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="message-content">
+                                        <p>嗨艾米莉，
+                                        </p>
+                                        <p>本周是一个伟大的一周，团队按照规定的截止日期按计划进行。该团队本周取得了巨大进步和成就。按照目前的速度，我们将能够按时交付产品并满足我们所期望的质量。随附的是我们团队本周举行的研讨会报告以及最早需要您批准的最终产品设计。
+                                        </p>
+                                        <p>对于下周，一旦设计获得批准并进行必要的改进，最优先考虑的是
+                                            <a href="#" target="_blank">http://www.bootstrapdash.com/
+                                            </a>
+                                            的开发。
+                                        </p>
+                                        <p>
+                                            <br>
+                                            <br>此致，
+                                            <br>莎拉格雷夫斯
+                                        </p>
+                                    </div>
+                                    <div class="attachments-sections">
+                                        <ul>
+                                            <li>
+                                                <div class="thumb">
+                                                    <i class="mdi mdi-file-pdf"></i>
+                                                </div>
+                                                <div class="details">
+                                                    <p class="file-name">JavaScript模式.pdf
+                                                    </p>
+                                                    <div class="buttons">
+                                                        <p class="file-size">15744kb
+                                                        </p>
+                                                        <a href="../assets/page/file/pdf/JavaScript模式.pdf" class="view">查看
+                                                        </a>
+                                                        <a href="../assets/page/file/pdf/JavaScript模式.pdf"  download class="download">下载
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="thumb">
+                                                    <i class="mdi mdi-file-image"></i>
+                                                </div>
+                                                <div class="details">
+                                                    <p class="file-name">text.png
+                                                    </p>
+                                                    <div class="buttons">
+                                                        <p class="file-size">29.4KB
+                                                        </p>
+                                                        <a href="../assets/page/file/img/text.png" class="view">查看</a>
+                                                        <a href="../assets/page/file/img/text.png" download class="download">下载</a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页面脚本 -->
+    <script src="../assets/page/js/vendor.bundle.base.js"></script>
+    <script src="../assets/page/js/vendor.bundle.addons.js"></script>
+    <script src="../assets/page/js/off-canvas.js"></script>
+    <script src="../assets/page/js/hoverable-collapse.js"></script>
+    <script src="../assets/page/js/misc.js"></script>
+    <script src="../assets/page/js/settings.js"></script>
+    <script src="../assets/page/js/todolist.js"></script>
+    <!-- 工具 -->
+    <script src="../assets/page/js/util/js/util.js"></script>
+</body>
+
+</html>

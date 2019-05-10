@@ -1,0 +1,135 @@
+ #bj:focus {
+     outline: none;
+ }
+
+ .bulletin_area {
+     position: relative;
+ }
+
+
+ .tab_wrapper {
+     background: #fff;
+     width: 630px;
+     box-shadow: 0 14px 28px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .22);
+     position: relative;
+     top: -32px;
+ }
+
+ .tab_wrapper>input[name=tab-control] {
+     display: none
+ }
+
+ .tab_wrapper>ul>li>label {
+     font-weight: 700;
+     font-size: 18px;
+     color: #428bff;
+     -webkit-transition: all .3s ease-in-out;
+     transition: all .3s ease-in-out;
+     color: #929daf;
+     padding: 5px auto;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     display: block;
+     cursor: pointer;
+     -webkit-transition: all .2s ease-in-out;
+     transition: all .2s ease-in-out;
+     white-space: nowrap;
+     -webkit-touch-callout: none;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none
+ }
+
+ .tab_wrapper>ul {
+     list-style-type: none;
+     padding-left: 0;
+     display: -webkit-box;
+     display: -webkit-flex;
+     display: -ms-flexbox;
+     display: flex;
+     -webkit-box-orient: horizontal;
+     -webkit-box-direction: normal;
+     -webkit-flex-direction: row;
+     -ms-flex-direction: row;
+     flex-direction: row;
+     margin-bottom: 10px;
+     -webkit-box-pack: justify;
+     -webkit-justify-content: space-between;
+     -ms-flex-pack: justify;
+     justify-content: space-between;
+     -webkit-box-align: end;
+     -webkit-align-items: flex-end;
+     -ms-flex-align: end;
+     align-items: flex-end;
+     -webkit-flex-wrap: wrap;
+     -ms-flex-wrap: wrap;
+     flex-wrap: wrap
+ }
+
+ .tab_wrapper>ul>li {
+     box-sizing: border-box;
+     -webkit-box-flex: 1;
+     -webkit-flex: 1;
+     -ms-flex: 1;
+     flex: 1;
+     width: 25%;
+     text-align: center
+ }
+
+ .tab_wrapper>ul>li>label:hover,
+ .tab_wrapper>ul>li>label:focus,
+ .tab_wrapper>ul>li>label:active {
+     outline: 0;
+     color: #bec5cf
+ }
+
+
+
+ .tab_wrapper>input[name=tab-control]:nth-of-type(1):checked~ul>li:nth-child(1)>label,
+ .tab_wrapper>input[name=tab-control]:nth-of-type(2):checked~ul>li:nth-child(2)>label {
+     cursor: default;
+     color: #428bff
+ }
+
+ .tab_wrapper>input[name=tab-control]:nth-of-type(1):checked~.specific_content>section:nth-child(1),
+ .tab_wrapper>input[name=tab-control]:nth-of-type(2):checked~.specific_content>section:nth-child(2) {
+     display: block
+ }
+
+
+ @-webkit-keyframes specific_content {
+     from {
+         opacity: 0;
+         -webkit-transform: translateY(5%);
+         transform: translateY(5%)
+     }
+
+     to {
+         opacity: 1;
+         -webkit-transform: translateY(0%);
+         transform: translateY(0%)
+     }
+ }
+
+ @keyframes specific_content {
+     from {
+         opacity: 0;
+         -webkit-transform: translateY(5%);
+         transform: translateY(5%)
+     }
+
+     to {
+         opacity: 1;
+         -webkit-transform: translateY(0%);
+         transform: translateY(0%)
+     }
+ }
+
+
+ .date_inquiry {
+     position: absolute;
+     right: 75px;
+     top: -40px;
+     height: calc(2.25rem + 0px);
+ }

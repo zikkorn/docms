@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqy.docms.dao.CjxxMapper" >
+  <delete id="delCjxxById" parameterType="java.lang.String" >
+    delete from db_cjxx where id = #{id}
+  </delete>
+  <insert id="saveCjxx" parameterType="com.tqy.docms.entity.Cjxx" >
+    insert into db_cjxx (id, czdw, jc, zgjdj, zgjds, place, 
+      gyzgbm, qyxz, yfrw, scrw, filepath, bz, create_date)
+    values (#{id}, #{czdw}, #{jc}, #{zgjdj}, #{zgjds}, #{place}, 
+      #{gyzgbm}, #{qyxz}, #{yfrw}, #{scrw}, #{filepath}, #{bz}, #{createDate})
+  </insert>
+  <update id="updateCjxx" parameterType="com.tqy.docms.entity.Cjxx" >
+    update db_cjxx
+    set czdw = #{czdw},
+      jc = #{jc},
+      zgjdj = #{zgjdj},
+      zgjds = #{zgjds},
+      place = #{place},
+      gyzgbm = #{gyzgbm},
+      qyxz = #{qyxz},
+      yfrw = #{yfrw},
+      scrw = #{scrw},
+      filepath = #{filepath},
+      bz = #{bz},
+      update_date = #{updateDate}
+    where id = #{id}
+  </update>
+  
+  <select id="queryCjxxCount" resultType="java.lang.Integer">
+  	select count(1) from db_cjxx
+       where 1=1
+       <if test="czdw != null and czdw != ''.toString()">
+           and czdw = #{czdw}
+       </if>
+       <if test="gyzgbm != null and gyzgbm != ''.toString()">
+           and gyzgbm = #{gyzgbm}
+       </if>
+  </select>
+    
+  <select id="getCjxx" resultType="com.tqy.docms.entity.Cjxx">
+ 	select id, czdw, jc, zgjdj, zgjds, place, gyzgbm, qyxz, yfrw, scrw, filepath, bz
+      from db_cjxx where 1=1
+      <if test="czdw != null and czdw != ''.toString()">
+           and czdw = #{czdw}
+       </if>
+       <if test="gyzgbm != null and gyzgbm != ''.toString()">
+           and gyzgbm = #{gyzgbm}
+       </if>
+      limit #{start},#{end}
+  </select>
+  
+  <select id="getCjxxById" resultType="com.tqy.docms.entity.Cjxx">
+ 	select id, czdw, jc, zgjdj, zgjds, place, gyzgbm, qyxz, yfrw, scrw, filepath, bz
+      from db_cjxx where id = #{id}
+  </select>
+</mapper>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqy.docms.dao.ZjzxzxxMapper" >
+  <delete id="delZjzxzxxById" parameterType="java.lang.String" >
+    delete from db_zjzxzxx where id = #{id}
+  </delete>
+  <insert id="saveZjzxzxx" parameterType="com.tqy.docms.entity.Zjzxzxx" >
+    insert into db_zjzxzxx 
+    (id, name, bzb, birthday, positional, csly, sxzy, record, filepath, bz, create_date)
+    values 
+    (#{id}, #{name}, #{bzb}, #{birthday}, #{positional}, #{csly}, #{sxzy}, #{record}, 
+    #{filepath}, #{bz}, #{createDate})
+  </insert>
+  <update id="updateZjzxzxx" parameterType="com.tqy.docms.entity.Zjzxzxx" >
+    update db_zjzxzxx
+    set name = #{name},
+      bzb = #{bzb},
+      birthday = #{birthday},
+      positional = #{positional},
+      csly = #{csly},
+      sxzy = #{sxzy},
+      record = #{record},
+      filepath = #{filepath},
+      bz = #{bz},
+      update_date = #{updateDate}
+    where id = #{id}
+  </update>
+  
+  <select id="queryZjxxCount" resultType="java.lang.Integer">
+  	select count(1) from db_zjzxzxx
+       where 1=1
+       <if test="name != null and name != ''.toString()">
+           and name = #{name}
+       </if>
+       <if test="positional != null and positional != ''.toString()">
+           and positional = #{positional}
+       </if>
+       <if test="csly != null and csly != ''.toString()">
+           and csly = #{csly}
+       </if>
+       <if test="sxzy != null and sxzy != ''.toString()">
+           and sxzy = #{sxzy}
+       </if>
+  </select>
+    
+  <select id="getZjzxzxx" resultType="com.tqy.docms.entity.Zjzxzxx">
+ 	select id, name, bzb, birthday, positional, csly, sxzy, record, filepath, bz
+      from db_zjzxzxx where 1=1
+      <if test="name != null and name != ''.toString()">
+           and name = #{name}
+      </if>
+      <if test="positional != null and positional != ''.toString()">
+           and positional = #{positional}
+       </if>
+       <if test="csly != null and csly != ''.toString()">
+           and csly = #{csly}
+       </if>
+       <if test="sxzy != null and sxzy != ''.toString()">
+           and sxzy = #{sxzy}
+       </if>
+      limit #{start},#{end}
+  </select>
+ 
+  <select id="getZjzxzxxById" resultType="com.tqy.docms.entity.Zjzxzxx">
+ 	select id, name, bzb, birthday, positional, csly, sxzy, record, filepath, bz
+      from db_zjzxzxx where id = #{id}
+  </select>
+</mapper>

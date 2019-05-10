@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqy.docms.dao.ProjectMapper" >
+
+	<select id="getProjectCnt" resultType="java.lang.Integer">
+		select count(1) from project 
+	</select>
+	
+	<select id="getDocCnt" resultType="java.lang.Integer">
+		select count(1) from document 
+	</select>
+	
+	<select id="docDateCnt" resultType="java.util.Map">
+		select str_to_date(create_date,'%Y-%m-%d') createDate,count(1) total 
+		from document group by createDate order by createDate desc limit 0,6
+	</select>
+	
+
+    <insert id="saveDocument" parameterType="com.tqy.docms.entity.Document">
+        insert into document(id,doc_name,doc_path,create_date,project_id,project_stage_child,user_id)
+        VALUES (#{id},#{docName},#{docPath},#{createDate},#{projectId},#{projectStageChild},#{userId})
+    </insert>
+    <update id="updateDocument" parameterType="com.tqy.docms.entity.Document">
+        UPDATE document SET
+        doc_name = #{docName}
+        ,doc_path = #{docPath}
+        ,project_id = #{projectId}
+        ,update_date = #{updateDate}
+        ,project_stage_child = #{projectStageChild}
+        WHERE id = #{id}
+    </update>
+    <select id="queryDocCount" resultType="java.lang.Integer">
+   		select count(1)
+        from document a,(select * from project where parent_id is null) p 
+		left join project c on p.id=c.parent_id 
+        where a.project_id=ifnull(c.id,p.id)
+        <if test="projectId != null and projectId != ''.toString()">
+            and a.project_id = #{projectId}
+        </if>
+        <if test="projectStage != null and projectStage != ''.toString()">
+            and ifnull(c.project_lx,p.project_lx) = #{projectStage}
+        </if>
+        <if test="projectStageChild != null and projectStageChild != ''.toString()">
+            and a.project_stage_child = #{projectStageChild}
+        </if>
+        <if test="userId != null and userId != ''.toString()">
+            and a.user_id = #{userId}
+        </if>
+    </select>
+    <select id="getdocument" resultType="java.util.Map">
+   		select a.id AS "id",
+   			  a.doc_path AS "docPath",
+              a.create_date AS "createDate",
+              a.update_date AS "updateDate",
+   			  a.project_id AS "projectId",
+              a.project_stage_child AS "projectStageChild",
+              p.project_name AS "pProjectName",
+              p.project_lx AS "pProjectStage",
+              ifnull(c.project_name,'') AS "cProjectName",
+              ifnull(c.project_lx,'') AS "cProjectStage"
+        from document a,(select * from project where parent_id is null) p 
+		left join project c on p.id=c.parent_id 
+        where a.project_id=ifnull(c.id,p.id)
+        <if test="projectId != null and projectId != ''.toString()">
+            and a.project_id = #{projectId}
+        </if>
+        <if test="projectStage != null and projectStage != ''.toString()">
+            and ifnull(c.project_lx,p.project_lx) = #{projectStage}
+        </if>
+        <if test="projectStageChild != null and projectStageChild != ''.toString()">
+            and a.project_stage_child = #{projectStageChild}
+        </if>
+        <if test="userId != null and userId != ''.toString()">
+            and a.user_id = #{userId}
+        </if>
+        limit #{start},#{end}
+    </select>
+    
+    <select id="getDocById" resultType="com.tqy.docms.entity.Document">
+   		select a.id AS "id",
+   			  a.doc_path AS "docPath",
+              a.create_date AS "createDate",
+              a.update_date AS "updateDate",
+   			  a.project_id AS "projectId",
+              a.project_stage_child AS "projectStageChild",
+              c.project_name AS "projectName",
+              c.project_lx AS "projectStage"
+        from document a,project c 
+        where a.project_id=c.id and a.id=#{id}
+    </select>
+    
+    <insert id="saveProject" parameterType="com.tqy.docms.entity.Project">
+        insert into project(id
+        	,project_name
+        	,create_date
+        	,dept
+        	,project_lx
+        	,parent_id
+			,yzdw
+			,fzr
+			,zjtd
+			,lxjd_date
+			,yzzyqjd_date
+			,fajd_date
+			,zyjd_date
+			,xnjdjd_date
+			,zzsyjd_date
+			,lzdxjd_date
+			,user_id)
+        VALUES (#{id}
+        	,#{projectName}
+        	,#{createDate}
+        	,#{dept}
+        	,#{projectLx}
+        	,#{parentId}
+			,#{yzdw}
+			,#{fzr}
+			,#{zjtd}
+			,#{lxjdDate}
+			,#{yzzyqjdDate}
+			,#{fajdDate}
+			,#{zyjdDate}
+			,#{xnjdjdDate}
+			,#{zzsyjdDate}
+			,#{lzdxjdDate}
+			,#{userId})
+    </insert>
+    <update id="updateProject" parameterType="com.tqy.docms.entity.Project">
+        UPDATE project SET
+	         project_name = #{projectName}
+	        ,update_date = #{updateDate}
+	        ,dept = #{dept}
+	        ,project_lx = #{projectLx}
+	        ,parent_id = #{parentId}
+			,yzdw = #{yzdw}
+			,fzr = #{fzr}
+			,zjtd = #{zjtd}
+			,lxjd_date = #{lxjdDate}
+			,yzzyqjd_date = #{yzzyqjdDate}
+			,fajd_date = #{fajdDate}
+			,zyjd_date = #{zyjdDate}
+			,xnjdjd_date = #{xnjdjdDate}
+			,zzsyjd_date = #{zzsyjdDate}
+			,lzdxjd_date = #{lzdxjdDate}
+        WHERE id = #{id}
+    </update>
+    
+    <update id="updateProName">
+        UPDATE project SET project_name = #{projectName} WHERE id = #{id}
+    </update>
+    
+    <select id="queryProCount" resultType="java.lang.Integer">
+    	select count(1)
+		FROM (select * from project where parent_id is null) p 
+		left join project c on p.id=c.parent_id
+		where 1=1 
+        <if test="projectName != null and projectName != ''.toString()">
+            and (p.project_name = #{projectName} or c.project_name = #{projectName})
+        </if>
+        <if test="dept != null and dept != ''.toString()">
+            and (p.dept = #{dept} or c.dept = #{dept})
+        </if>
+        <if test="projectLx != null and projectLx != ''.toString()">
+            and (p.project_lx = #{projectLx} or c.project_lx = #{projectLx})
+        </if>
+        <if test="userId != null and userId != ''.toString()">
+            and p.user_id = #{userId}
+        </if>
+    </select>
+    <select id="getProject" resultType="java.util.Map">
+	    select 
+	    	p.id AS "pId"
+	    	,p.dept AS "pDept"
+	    	,p.project_name AS "pName"
+	    	,p.project_lx AS "pLx"
+	    	,p.create_date AS "pCreateDate"
+	    	,ifnull(p.update_date,'') AS "pUpdateDate"
+	    	,ifnull(c.project_name,'') AS "cName"
+	    	,ifnull(c.id,'') AS "cId"
+	    	,ifnull(c.dept,'') AS "cDept"
+	    	,ifnull(c.project_lx,'') AS "cLx"
+	    	,ifnull(c.create_date,'') AS "cCreateDate"
+	    	,ifnull(c.update_date,'') AS "cUpdateDate"
+		FROM (select * from project where parent_id is null) p 
+		left join project c on p.id=c.parent_id
+		where 1=1
+        <if test="projectName != null and projectName != ''.toString()">
+            and (p.project_name = #{projectName} or c.project_name = #{projectName})
+        </if>
+        <if test="dept != null and dept != ''.toString()">
+            and (p.dept = #{dept} or c.dept = #{dept})
+        </if>
+        <if test="projectLx != null and projectLx != ''.toString()">
+            and (p.project_lx = #{projectLx} or c.project_lx = #{projectLx})
+        </if>
+        <if test="userId != null and userId != ''.toString()">
+            and p.user_id = #{userId}
+        </if>
+        limit #{start},#{end}
+    </select>
+    <select id="getProjectById" parameterType="java.lang.String" resultType="com.tqy.docms.entity.Project">
+    	select id
+        	,project_name AS "projectName"
+	        ,dept AS "dept"
+	        ,project_lx AS "projectLx"
+	        ,parent_id AS "parentId"
+			,yzdw AS "yzdw"
+			,fzr AS "fzr"
+			,zjtd AS "zjtd"
+			,lxjd_date AS "lxjdDate"
+			,yzzyqjd_date AS "yzzyqjdDate"
+			,fajd_date AS "fajdDate"
+			,zyjd_date AS "zyjdDate"
+			,xnjdjd_date AS "xnjdjdDate"
+			,zzsyjd_date AS "zzsyjdDate"
+			,lzdxjd_date AS "lzdxjdDate"
+			from project where id=#{id}
+    </select>
+    
+    <select id="getParentPro" resultType="java.util.Map">
+   		select id,project_name AS "projectName",project_lx AS "projectLx"
+        from project where parent_id is null 
+        <if test="userId != null and userId != ''.toString()">
+            and user_id = #{userId}
+        </if>
+    </select>
+    
+    <select id="getChildPro" resultType="java.util.Map">
+   		select id,project_name AS "projectName",project_lx AS "projectLx"
+        from project where parent_id = #{parentId}
+    </select>
+    
+    <select id="getDeptName" resultType="java.util.Map">
+   		select id,dept from project  
+   		where 1=1
+        <if test="userId != null and userId != ''.toString()">
+            and user_id = #{userId}
+        </if>
+        group by dept
+    </select>
+    
+    <delete id="delDocument">
+    	delete from document where id=#{id}
+    </delete>
+    
+    <delete id="delProject">
+    	delete from project where id=#{id}
+    </delete>
+    
+    <select id="queryZxqkCount" resultType="java.lang.Integer">
+    	select count(1)
+		from (select * from project where parent_id is null) p 
+		left join project c on p.id=c.parent_id
+		where p.user_id = #{userId} or c.user_id = #{userId}
+    </select>
+    <select id="getProjectZxqk" resultType="java.util.Map">
+	    select p.id AS "pId"
+	    	,p.project_name AS "pName"
+	    	,p.yzdw AS "pYzdw"
+	    	,p.fzr AS "pFzr"
+	    	,p.zjtd AS "pZjtd"
+	    	,ifnull(p.zxjd,'') AS "pSsjd"
+	    	,ifnull(c.id,'') AS "cId"
+	    	,ifnull(c.project_name,'') AS "cName"
+    		,ifnull(c.yzdw,'') AS "cYzdw"
+    		,ifnull(c.fzr,'') AS "cFzr"
+    		,ifnull(c.zjtd,'') AS "cZjtd"
+    		,ifnull(c.zxjd,'') AS "cSsjd"
+		from (select * from project where parent_id is null) p 
+		left join project c on p.id=c.parent_id
+		where p.user_id = #{userId} or c.user_id = #{userId}
+        limit #{start},#{end}
+    </select>
+    
+    <select id="getProSyJd" parameterType="java.lang.String" resultType="java.util.Map">
+    	select id
+			,project_name AS "projectName"
+			,lxjd_date,yzzyqjd_date,fajd_date,zyjd_date,xnjdjd_date,zzsyjd_date,lzdxjd_date
+			,ifnull(zxjd,'') AS "zxjd"
+		from project where id = #{id}
+    </select>
+    
+    <update id="updateProSj" parameterType="com.tqy.docms.entity.Project">
+        UPDATE project SET zxjd = #{zxjd}
+        <if test="lxjdDate != null and lxjdDate != ''.toString()">
+            ,lxjd_date = #{lxjdDate}
+        </if>
+        <if test="yzzyqjdDate != null and yzzyqjdDate != ''.toString()">
+            ,yzzyqjd_date = #{yzzyqjdDate}
+        </if>
+        <if test="fajdDate != null and fajdDate != ''.toString()">
+			,fajd_date = #{fajdDate}
+		</if>
+		<if test="zyjdDate != null and zyjdDate != ''.toString()">
+			,zyjd_date = #{zyjdDate}
+		</if>
+		<if test="xnjdjdDate != null and xnjdjdDate != ''.toString()">
+			,xnjdjd_date = #{xnjdjdDate}
+		</if>
+		<if test="zzsyjdDate != null and zzsyjdDate != ''.toString()">
+			,zzsyjd_date = #{zzsyjdDate}
+		</if>
+		<if test="lzdxjdDate != null and lzdxjdDate != ''.toString()">
+			,lzdxjd_date = #{lzdxjdDate}
+		</if>
+        WHERE id = #{id}
+    </update>
+    
+    <insert id="saveProjectZxx" parameterType="com.tqy.docms.entity.ProjectZxqk">
+        insert into project_tssx(id,project_id,ssjd,znd,jbsx,lrsj,zxsj)
+        VALUES (#{id},#{projectId},#{ssjd},#{znd},#{jbsx},#{lrsj},#{zxsj})
+    </insert>
+    
+    <update id="updateProjectZxx" parameterType="com.tqy.docms.entity.ProjectZxqk">
+        UPDATE project_tssx SET
+        zxsj = #{zxsj}
+        ,znd = #{znd}
+        ,jbsx = #{jbsx}
+        ,update_date = #{updateDate}
+        WHERE id = #{id}
+    </update>
+    
+    <delete id="delTssx">
+    	delete from project_tssx where id=#{id}
+    </delete>
+    
+    <select id="getTssx" resultType="com.tqy.docms.entity.ProjectZxqk">
+   		select id,ssjd,znd,jbsx,zxsj from project_tssx  
+   		where 1=1
+        <if test="projectId != null and projectId != ''.toString()">
+            and project_id = #{projectId}
+        </if>
+        <if test="zxjd != null and zxjd != ''.toString()">
+            and ssjd = #{zxjd}
+        </if>
+        order by STR_TO_DATE(zxsj,'%Y/%m/%d %H:%i:%s') desc
+    </select>
+</mapper>

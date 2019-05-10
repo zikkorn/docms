@@ -1,0 +1,510 @@
+@font-face {
+	font-family : jedatefont;
+	src : url(../font/jedatefont.eot?t=1510763148800);
+	src : url(../font/jedatefont.eot?t=1510763148800#iefix) format('embedded-opentype'),url(../font/jedatefont.woff?t=1510763148800) format('woff'),
+  url(../font/jedatefont.ttf?t=1510763148800) format('truetype'),url(../font/jedatefont.svg?t=1510763148800#jedatefont) format('svg');
+}
+.jedatefont {
+	font-family : jedatefont!important;
+	font-style : normal;
+	-webkit-font-smoothing : antialiased;
+	-moz-osx-font-smoothing : grayscale;
+}
+.jedate {
+	position : relative;
+	display : inline-block;
+	margin : 0;
+	padding : 0;
+	border : 1px solid #e2e2e2;
+	height : auto;
+	font-family : pingfangsc-light,pingfang sc,segoe ui,lucida grande,notosanshans-light,microsoft yahei,\5fae\8f6f\96c5\9ed1,STHeiti,wenquanyi micro hei,SimSun,sans-serif;
+	font-size : 12px;
+	cursor : default;
+	overflow : hidden;
+	border-radius : 4px;
+	box-shadow : 0 1px 6px rgba(0,0,0,.15);
+	background-color : #fff;
+}
+.jedate * {
+	margin : 0;
+	padding : 0;
+	list-style-type : none;
+	-webkit-box-sizing : border-box;
+	   -moz-box-sizing : border-box;
+	        box-sizing : border-box;
+	font-style : normal;
+	font-family : pingfangsc-light,pingfang sc,segoe ui,lucida grande,notosanshans-light,microsoft yahei,\5fae\8f6f\96c5\9ed1,STHeiti,wenquanyi micro hei,SimSun,sans-serif;
+}
+.jedate table thead,
+.jedate table td {
+	border : 1px #fff solid;
+}
+.jedate ul,
+.jedate ol,
+.jedate li,
+.jedate dl {
+	list-style-type : none;
+	font-style : normal;
+	font-weight : 300;
+}
+.jedate .yearprev {
+	left : 0;
+	font-size : 14px;
+}
+.jedate .monthprev {
+	left : 25px;
+	font-size : 14px;
+}
+.jedate .yearnext {
+	right : 0;
+	font-size : 14px;
+}
+.jedate .monthnext {
+	right : 25px;
+	font-size : 14px;
+}
+.jedate .jedate-tips {
+	position : absolute;
+	top : 40%;
+	left : 50%;
+	display : none;
+	padding : 15px;
+	border : 1px #f7ce39 solid;
+	width : 200px;
+	z-index : 800;
+	margin-left : -100px;
+	line-height : 20px;
+	text-align : center;
+	font-size : 12px;
+	color : red;
+	background-color : #fffef4;
+}
+.jedate .timecontent ul::-webkit-scrollbar,
+.jedate-menu::-webkit-scrollbar {
+	width : 6px;
+	height : 6px;
+	margin-right : 5px;
+	background-color : #f5f5f5;
+	transition : all .3s ease-in-out;
+	border-radius : 0;
+}
+.jedate .timecontent ul::-webkit-scrollbar-track,
+.jedate-menu::-webkit-scrollbar-track {
+	-webkit-border-radius : 0;
+	        border-radius : 0;
+}
+.jedate .timecontent ul::-webkit-scrollbar-thumb,
+.jedate-menu::-webkit-scrollbar-thumb {
+	-webkit-border-radius : 0;
+	        border-radius : 0;
+	background : rgba(0,0,0,.5);
+}
+.jedate .timecontent ul::-webkit-scrollbar-thumb:hover,
+.jedate-menu::-webkit-scrollbar-thumb:hover {
+	background : rgba(0,0,0,.6);
+}
+.jedate .timecontent ul::-webkit-scrollbar-thumb:active,
+.jedate-menu::-webkit-scrollbar-thumb:active {
+	background : rgba(0,0,0,.8);
+}
+.jedate .timecontent ul::-webkit-scrollbar-thumb:window-inactive,
+.jedate-menu::-webkit-scrollbar-thumb:window-inactive {
+	background : rgba(0,0,0,.4);
+}
+.jedate .jedate-hmsmask {
+	position : absolute;
+	top : 0;
+	bottom : 36px;
+	left : 0;
+	right : 0;
+	display : block;
+	width : 100%;
+	background-color : rgba(0,0,0,.7);
+	background-color : #fff;
+	z-index : 100;
+}
+.jedatetipscon {
+	padding : 6px;
+	border : 1px #f7ce39 solid;
+	color : #333;
+	float : left;
+	overflow : hidden;
+	background-color : #fffef4;
+	line-height : 22px;
+	font-style : normal;
+	font-family : Arial,\5b8b\4f53,'sans-serif';
+	font-size : 12px;
+	font-weight : 300;
+}
+.jedatetipscon p {
+	margin : 0;
+	padding : 0;
+	font-size : 12px;
+}
+.jedatetipscon p.red {
+	color : red;
+}
+.jedate.leftmenu {
+	padding-left : 90px;
+}
+.jedate .jedate-menu {
+	position : absolute;
+	top : 0;
+	bottom : 0;
+	left : 0;
+	display : block;
+	padding : 4px 0;
+	width : 90px;
+	z-index : 10;
+	background : #f2f2f2;
+	border-right : 1px solid #efefef;
+	border-radius : 4px 0 0 4px;
+	overflow : auto;
+}
+.jedate .jedate-menu p {
+	height : 30px;
+	line-height : 30px;
+	padding-left : 8px;
+	overflow : hidden;
+	font-size : 12px;
+	cursor : pointer;
+}
+.jedate .jedate-menu p:hover {
+	background-color : #00a680;
+	color : #fff;
+}
+.jedate .jedate-wrap {
+	min-width : 230px;
+	background : #fff;
+	overflow : hidden;
+}
+.jedate .jedate-pane {
+	width : 230px;
+	float : left;
+	overflow : hidden;
+}
+.jedate .jedate-header {
+	position : relative;
+	padding : 0 50px;
+	width : 100%;
+	height : 36px;
+	line-height : 36px;
+	float : left;
+	background-color : #00A1CB;
+	text-align : center;
+	font-size : 14px;
+}
+.jedate .jedate-header em {
+	position : absolute;
+	top : 0;
+	width : 25px;
+	height : 36px;
+	line-height : 36px;
+	color : #666;
+	background-repeat : no-repeat;
+	background-position : center center;
+	cursor : pointer;
+}
+.jedate .jedate-header .ymbtn {
+	padding : 8px;
+	border-radius : 4px;
+	cursor : pointer;
+	font-size : 14px;
+}
+.jedate .jedate-content {
+	padding : 5px;
+	width : 100%;
+	height : 220px;
+	float : left;
+	overflow : hidden;
+	background: #fff;
+}
+.jedate .jedate-content.bordge {
+	border-left : 1px #e9e9e9 solid;
+}
+.jedate .jedate-content .yeartable,
+.jedate .jedate-content .monthtable {
+	width : 100%;
+	border-collapse : collapse;
+	border-spacing : 0;
+}
+.jedate .jedate-content .yeartable td,
+.jedate .jedate-content .monthtable td {
+	position : relative;
+	width : 73px;
+	height : 51px;
+	line-height : 51px;
+	text-align : center;
+	overflow : hidden;
+	font-size : 14px;
+	color:#000;
+
+}
+.jedate .jedate-content .yeartable td span,
+.jedate .jedate-content .monthtable td span {
+	padding : 8px 10px;
+	border : 1px solid #fff;
+}
+.jedate .jedate-content .yeartable td.action span,
+.jedate .jedate-content .monthtable td.action span,
+.jedate .jedate-content .yeartable td.action span:hover,
+.jedate .jedate-content .monthtable td.action span:hover {
+	border : 1px #00A1CB solid;
+	background-color : #00A1CB;
+	color : #fff;
+}
+.jedate .jedate-content .yeartable td span:hover,
+.jedate .jedate-content .monthtable td span:hover {
+	border : 1px #f2f2f2 solid;
+	background-color : #f2f2f2;
+}
+.jedate .jedate-content .yeartable td.disabled span,
+.jedate .jedate-content .monthtable td.disabled span,
+.jedate .jedate-content .yeartable td.disabled span:hover,
+.jedate .jedate-content .monthtable td.disabled span:hover {
+	border : 1px solid #fff;
+	color : #bbb;
+	background-color : #fff;
+}
+.jedate .jedate-content .yeartable td.contain span,
+.jedate .jedate-content .monthtable td.contain span,
+.jedate .jedate-content .yeartable td.contain span:hover,
+.jedate .jedate-content .monthtable td.contain span:hover {
+	border : 1px #d0f0e3 solid;
+	background-color : #d0f0e3;
+}
+.jedate.grid .daystable thead,
+.jedate.grid .daystable td {
+	border : 1px #f2f2f2 solid;
+}
+.jedate .jedate-content .daystable {
+	width : 100%;
+	border-collapse : collapse;
+	border-spacing : 0;
+}
+.jedate .jedate-content .daystable thead {
+	background-color : #fff;
+}
+.jedate .jedate-content .daystable th {
+	position : relative;
+	width : 31px;
+	height : 27px;
+	text-align : center;
+	overflow : hidden;
+	font-size : 12px;
+	font-weight : 400;
+	color: #000
+}
+.jedate .jedate-content .daystable td {
+	position : relative;
+	width : 31px;
+	height : 30px;
+	text-align : center;
+	overflow : hidden;
+	font-size : 14px;
+	font-family : Arial,\5b8b\4f53,'sans-serif';
+	color: #000
+}
+.jedate .jedate-content .daystable td .nolunar {
+	line-height : 29px;
+	font-size : 14px;
+	font-family : Arial,\5b8b\4f53,'sans-serif';
+}
+.jedate .jedate-content .daystable td .solar {
+	display : block;
+	height : 14px;
+	line-height : 14px;
+	font-size : 14px;
+	padding-top : 2px;
+	font-family : Arial,\5b8b\4f53,'sans-serif';
+}
+.jedate .jedate-content .daystable td .lunar {
+	display : block;
+	height : 15px;
+	line-height : 15px;
+	font-size : 12px;
+	overflow : hidden;
+	font-family : Arial,\5b8b\4f53,'sans-serif';
+	color : #888;
+	transform : scale(.95);
+}
+.jedate .jedate-content .daystable td.action,
+.jedate .jedate-content .daystable td.action:hover,
+.jedate .jedate-content .daystable td.action .lunar {
+	background-color : #00A1CB;
+	color : #fff;
+}.jedate .jedate-content .daystable td.other,
+.jedate .jedate-content .daystable td.other .nolunar,
+.jedate .jedate-content .daystable td.other .lunar {
+	color : #000;
+}.jedate .jedate-content .daystable td.disabled,
+.jedate .jedate-content .daystable td.disabled .nolunar,
+.jedate .jedate-content .daystable td.disabled .lunar {
+	color : #bbb;
+}
+.jedate .jedate-content .daystable td.contain,
+.jedate .jedate-content .daystable td.contain:hover {
+	background-color : #00A1CB;
+	color : #fff;
+}
+.jedate .jedate-content .daystable td.disabled:hover {
+	background-color : #fff;
+}
+.jedate .jedate-content .daystable td:hover {
+	background-color : #f2f2f2;
+}
+.jedate .jedate-content .daystable td.red {
+	color : red;
+}
+.jedate .jedate-content .daystable td .marks {
+	position : absolute;
+	top : 4px;
+	right : 2px;
+	width : 5px;
+	height : 5px;
+	background-color : red;
+	-webkit-border-radius : 50%;
+	        border-radius : 50%;
+}
+.jedate .jedate-content .daystable td.action .marks {
+	position : absolute;
+	top : 4px;
+	right : 2px;
+	width : 5px;
+	height : 5px;
+	background-color : #fff;
+	-webkit-border-radius : 50%;
+	        border-radius : 50%;
+}
+.jedate .jedate-time {
+	position : absolute;
+	top : 0;
+	right : 0;
+	overflow : hidden;
+	padding-bottom : 4px;
+	background-color : #fff;
+	z-index : 150;
+}
+.jedate .jedate-time .timepane {
+	width : 230px;
+	float : left;
+}
+.jedate .jedate-time .timeheader {
+	position : relative;
+	width : 100%;
+	height : 36px;
+	float : left;
+	line-height : 36px;
+	background-color : #f2f2f2;
+	text-align : center;
+	font-size : 14px;
+}
+.jedate .jedate-time .timecontent {
+	width : 100%;
+	float : left;
+}
+.jedate .jedate-time .hmstitle {
+	margin : 0 auto;
+	width : 211px;
+	overflow : hidden;
+	padding-top : 4px;
+	text-align : center;
+}
+.jedate .jedate-time .hmstitle p {
+	width : 33.33%;
+	height : 30px;
+	float : left;
+	line-height : 30px;
+	font-size : 13px;
+}
+.jedate .jedate-time .hmslist {
+	margin : 0 auto 6px;
+	border : 1px solid #ddd;
+	width : 211px;
+	border-right : 0;
+	overflow : hidden;
+}
+.jedate .jedate-time .hmslist .hmsauto {
+	margin : 0;
+	height : 100%;
+	text-align : center;
+}
+.jedate .jedate-time .hmslist ul {
+	width : 70px;
+	height : 174px;
+	float : left;
+	border-right : 1px solid #ddd;
+	overflow : hidden;
+}
+.jedate .jedate-time .hmslist .hmsauto:hover ul {
+	overflow-y : auto;
+}
+.jedate .jedate-time .hmslist ul li {
+	width : 130%;
+	height : 25px;
+	padding-left : 26px;
+	text-align : left;
+	line-height : 25px;
+	font-size : 14px;
+	font-family : Arial,\5b8b\4f53,'sans-serif';
+}
+.jedate .jedate-time .hmslist ul li:hover {
+	background-color : #f2f2f2;
+}
+.jedate .jedate-time .hmslist ul li.action,
+.jedate-time .hmslist ul li.action:hover {
+	background-color : #00a680;
+	color : #fff;
+}
+.jedate .jedate-time .hmslist ul li.disabled {
+	background-color : #fbfbfb;
+	color : #ccc;
+}
+.jedate .jedate-time .hmslist ul li.disabled.action {
+	background-color : #00a680;
+	color : #fff;
+	filter : Alpha(opacity=30);
+	opacity : .3;
+}
+.jedate .jedate-footbtn {
+	padding : 0 6px;
+	height : 36px;
+	border-top : 1px #e9e9e9 solid;
+	overflow : hidden;
+}
+.jedate .jedate-footbtn .timecon {
+	display : block;
+	padding : 0 5px;
+	line-height : 28px;
+	background-color : #00a680;
+	color : #fff;
+	float : left;
+	font-size : 12px;
+	margin-top : 4px;
+	border-radius : 4px;
+	overflow : hidden;
+}
+.jedate .jedate-footbtn .btnscon {
+	display : block;
+	line-height : 28px;
+	margin-top : 4px;
+	float : right;
+	font-size : 12px;
+	border-radius : 4px;
+	overflow : hidden;
+}
+.jedate .jedate-footbtn .btnscon span {
+	display : block;
+	padding : 0 5px;
+	height : 28px;
+	float : left;
+	border-right : 1px #fff solid;
+	background-color : #00A1CB;
+	color : #fff;
+	line-height : 28px;
+	text-align : center;
+	overflow : hidden;
+}
+.jedate .jedate-footbtn .btnscon span:last-child {
+	border-right : 0;
+}

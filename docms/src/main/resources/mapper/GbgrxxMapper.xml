@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqy.docms.dao.GbgrxxMapper" >
+ 
+  <insert id="saveGbgrxx" parameterType="com.tqy.docms.entity.Gbgrxx" >
+    insert into db_grxx (
+    id,name,birthday,dtsj,rwsj,jg,xzjysj,jxysj,zyjszgysj,qrzxl,jgz,sfz,bz,filepath,create_date
+    )
+    values (
+    #{id}, #{name}, #{birthday}, #{dtsj}, #{rwsj}, #{jg}, #{xzjysj}, #{jxysj}, #{zyjszgysj}, #{qrzxl}, 
+      #{jgz}, #{sfz}, #{bz}, #{filepath},#{createDate}
+      )
+  </insert>
+   <update id="updateGbgrxx" parameterType="com.tqy.docms.entity.Gbgrxx" >
+    update db_grxx
+    set name = #{name},
+      birthday = #{birthday},
+      dtsj = #{dtsj},
+      rwsj = #{rwsj},
+      jg = #{jg},
+      xzjysj = #{xzjysj},
+      jxysj = #{jxysj},
+      zyjszgysj = #{zyjszgysj},
+      qrzxl = #{qrzxl},
+      jgz = #{jgz},
+      sfz = #{sfz},
+      bz = #{bz},
+      filepath = #{filepath},
+      update_date = #{updateDate}
+    where id = #{id}
+  </update>
+ 
+  <select id="queryGrxxCount" resultType="java.lang.Integer">
+  	select count(1) from db_grxx
+       where 1=1
+       <if test="name != null and name != ''.toString()">
+           and name = #{name}
+       </if>
+       <if test="jxysj != null and jxysj != ''.toString()">
+           and jxysj = #{jxysj}
+       </if>
+       <if test="xzjysj != null and xzjysj != ''.toString()">
+           and xzjysj = #{xzjysj}
+       </if>
+  </select>
+    
+  <select id="getGbgrxx" resultType="com.tqy.docms.entity.Gbgrxx">
+ 	select id,name,birthday,dtsj,rwsj,jg,xzjysj,jxysj,zyjszgysj,qrzxl,jgz,sfz,bz,filepath
+      from db_grxx where 1=1
+      <if test="name != null and name != ''.toString()">
+          and name = #{name}
+      </if>
+      <if test="jxysj != null and jxysj != ''.toString()">
+          and jxysj = #{jxysj}
+      </if>
+      <if test="xzjysj != null and xzjysj != ''.toString()">
+          and xzjysj = #{xzjysj}
+      </if>
+      limit #{start},#{end}
+  </select>
+ 
+  <select id="getGbgrxxById" resultType="com.tqy.docms.entity.Gbgrxx">
+ 	select id,name,birthday,dtsj,rwsj,jg,xzjysj,jxysj,zyjszgysj,qrzxl,jgz,sfz,bz,filepath
+      from db_grxx where id = #{id}
+  </select>
+  <delete id="delGbgrxxById" parameterType="java.lang.String" >
+    delete from db_grxx where id = #{id}
+  </delete>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+  
+<mapper namespace="com.tqy.docms.dao.UserMapper" >
+
+    <select id="getUserByName" resultType="com.tqy.docms.entity.User">
+        select user_id as "id",
+        user_name as "username",
+        user_pwd as "password"
+        from user where user_name=#{userName} and user_pwd=#{userPwd}
+    </select>
+    
+    <select id="getRoleByUser" resultType="java.lang.String">
+    	select r.role_name from user u,role r,role_user ru 
+    	where ru.user_id = u.user_id and ru.role_id = r.role_id and u.user_id=#{userId}
+    </select>
+    
+    <insert id="saveActivity" parameterType="com.tqy.docms.entity.Activity">
+        insert into daily_activity(id,title,activity_description,user_id,date_time,lx)
+        VALUES (#{id},#{title},#{activity_description},#{userId},#{datetime},#{lx})
+    </insert>
+    
+    <select id="getAdminActivity" resultType="com.tqy.docms.entity.Activity">
+    	select u.user_name AS "name",t.* 
+    	from user u,
+    	(select id AS "id"
+    	,title AS "title"
+    	,activity_description AS "activity_description"
+    	,user_id AS "userId"
+    	,date_time AS "datetime"
+    	 from daily_activity where user_id = #{userId} or (user_id != #{userId} and lx='公有'))  t
+		where u.user_id = t.userId
+    </select>
+    
+    <select id="getUserActivity" resultType="com.tqy.docms.entity.Activity">
+    	select d.id AS "id"
+    	,d.title AS "title"
+    	,d.activity_description AS "activity_description"
+    	,d.user_id AS "userId"
+    	,d.date_time AS "datetime"
+		,u.user_name AS  "name"
+    	 from daily_activity d,user u
+		where u.user_id = d.user_id and d.user_id = #{userId}
+    </select>
+
+</mapper>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqy.docms.dao.ZbscxxMapper" >
+  <delete id="delZbscxxById" parameterType="java.lang.String" >
+    delete from db_zbscxx where id = #{id}
+  </delete>
+  <insert id="saveZbscxx" parameterType="com.tqy.docms.entity.Zbscxx" >
+    insert into db_zbscxx 
+    (id, zbmc, zyyt, zblx, zsjsxn, zytd, dxsj, bpjb, czdw, filepath, bz, create_date)
+    values 
+    (#{id}, #{zbmc}, #{zyyt}, #{zblx}, #{zsjsxn}, #{zytd}, #{dxsj}, #{bpjb}, #{czdw}, #{filepath}, #{bz}, #{createDate})
+  </insert>
+  <update id="updateZbscxx" parameterType="com.tqy.docms.entity.Zbscxx" >
+    update db_zbscxx
+    set zbmc = #{zbmc},
+      zyyt = #{zyyt},
+      zblx = #{zblx},
+      zsjsxn = #{zsjsxn},
+      zytd = #{zytd},
+      dxsj = #{dxsj},
+      bpjb = #{bpjb},
+      czdw = #{czdw},
+      filepath = #{filepath},
+      bz = #{bz},
+      update_date = #{updateDate}
+    where id = #{id}
+  </update>
+  
+  <select id="queryScxxCount" resultType="java.lang.Integer">
+  	select count(1) from db_zbscxx
+       where 1=1
+       <if test="zbmc != null and zbmc != ''.toString()">
+           and zbmc = #{zbmc}
+       </if>
+       <if test="zblx != null and zblx != ''.toString()">
+           and zblx = #{zblx}
+       </if>
+       <if test="zytd != null and zytd != ''.toString()">
+           and zytd = #{zytd}
+       </if>
+       <if test="czdw != null and czdw != ''.toString()">
+           and czdw = #{czdw}
+       </if>
+  </select>
+    
+  <select id="getZbscxx" resultType="com.tqy.docms.entity.Zbscxx">
+ 	select id, zbmc, zyyt, zblx, zsjsxn, zytd, dxsj, bpjb, czdw, filepath, bz
+      from db_zbscxx where 1=1
+      <if test="zbmc != null and zbmc != ''.toString()">
+           and zbmc = #{zbmc}
+       </if>
+       <if test="zblx != null and zblx != ''.toString()">
+           and zblx = #{zblx}
+       </if>
+       <if test="zytd != null and zytd != ''.toString()">
+           and zytd = #{zytd}
+       </if>
+       <if test="czdw != null and czdw != ''.toString()">
+           and czdw = #{czdw}
+       </if>
+      limit #{start},#{end}
+  </select>
+ 
+  <select id="getZbscxxById" resultType="com.tqy.docms.entity.Zbscxx">
+ 	select id, zbmc, zyyt, zblx, zsjsxn, zytd, dxsj, bpjb, czdw, filepath, bz
+      from db_zbscxx where id = #{id}
+  </select>
+</mapper>

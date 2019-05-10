@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tqy.docms.dao.ShareDataMapper" >
+  <resultMap id="BaseResultMap" type="com.tqy.docms.entity.ShareData" >
+    <id column="id" property="id" jdbcType="VARCHAR" />
+    <result column="zllx" property="zllx" jdbcType="VARCHAR" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="filepath" property="filepath" jdbcType="VARCHAR" />
+    <result column="filesize" property="filesize" jdbcType="VARCHAR" />
+    <result column="bz" property="bz" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="VARCHAR" />
+    <result column="update_date" property="updateDate" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <insert id="saveShareData" parameterType="com.tqy.docms.entity.ShareData" >
+    insert into share_data(id, zllx, author, title, filepath, filesize, bz, create_date)
+    values(#{id}, #{zllx}, #{author}, #{title}, #{filepath}, #{filesize}, #{bz}, #{createDate})
+  </insert>
+ 
+  <update id="updateShareData" parameterType="com.tqy.docms.entity.ShareData" >
+    update share_data set 
+    	zllx = #{zllx},
+      	author = #{author},
+     	title = #{title},
+      	filepath = #{filepath},
+      	filesize = #{filesize},
+      	bz = #{bz},
+      	update_date = #{updateDate}
+    where id = #{id}
+  </update>
+  
+  <delete id="delShareById" parameterType="java.lang.String" >
+	delete from share_data where id = #{id}
+  </delete>
+
+  <select id="queryShareCount" resultType="java.lang.Integer">
+ 	select count(1) from share_data 
+ 	where 1=1
+    <if test="zllx != null and zllx != ''.toString()">
+        and zllx = #{zllx}
+    </if>
+    <if test="title != null and title != ''.toString()">
+        and title = #{title}
+    </if>
+  </select>
+  
+  <select id="getShareData" resultType="com.tqy.docms.entity.ShareData">
+ 	select id, zllx, author, title, filepath, filesize, bz, update_date AS "updateDate"
+     from share_data 
+	  where 1=1
+     <if test="zllx != null and zllx != ''.toString()">
+         and zllx = #{zllx}
+     </if>
+     <if test="title != null and title != ''.toString()">
+         and title = #{title}
+     </if>
+     limit #{start},#{end}
+  </select>
+  
+   <select id="getShareById" parameterType="java.lang.String">
+ 	select id, zllx, author, title, filepath, filesize, bz, update_date AS "updateDate"
+     from share_data where id = #{id}
+  </select>
+</mapper>
